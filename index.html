@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROUND A'ROUND</title>
+    <!--jquery-->
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <!--swiper-->
+    <script src="lib/swiper.min.js"></script>
+    <link rel="stylesheet" href="css/swiper.css">
+    <!--css-->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!--web_font-->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;500&display=swap" rel="stylesheet">
+    <!--fontawsome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<style>
+    .nav_fix { position: fixed; width:100%; top: 100px; z-index: 30; padding-top: 40px;
+    padding-bottom: 24px; }
+        
+</style>
+<script>
+    $(document).ready( function(){
+        var mainswiper = new Swiper('.mainBanner', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+
+            loop: true,
+            effect: 'fade',
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            autoplay: {
+                delay: 5000,
+            }
+        });
+       
+        // 마우스 icon
+        // $(document).on('mousemove', function (e) {
+        //     $(".mouseCur").css({
+        //     "left": e.clientX,
+        //     "top": e.clientY
+        //     });
+        // });
+
+        //search click event
+        $('#search_btn,.close_box').click( function(){
+            $('nav').slideToggle();
+        });
+
+        $(window).scroll( function(){
+            console.log( $(this).scrollTop() );
+            if( $(this).scrollTop() >= $('header').height()){
+                $('.header_wrap').addClass('nav_fix');
+            }else {
+                $('.header_wrap').removeClass('nav_fix');
+            }
+        });
+
+    });
+</script>
+<style>
+    /*common*/
+    .w100 { width: 100%; }
+    input { outline: none;  }
+    .dw_1600px { width: 100%; max-width: 1600px; margin: 0 auto; }
+    .over_hidden { overflow: hidden; }
+    .t_left { text-align: left; }
+    .t_center { text-align: center; }
+    .t_right { text-align: right; }
+    .cursor_pointer { cursor: pointer; }
+    .mouseCur {
+        display: block;
+        width: 40px;
+        height: 60px;
+        /* border: 3px solid #000; */
+        position: fixed;
+        top: -999px;
+        left: -999px;
+        /* background-color: #fff; */
+        margin: -30px 0 0 -20px;
+        border-radius: 20px;
+        cursor: none;
+        z-index: 100;
+    }
+
+    .mouseCur .wheel {
+        display: inline-block;
+        position: absolute;
+        top: 11px;
+        left: 50%;
+        margin-left: -3px;
+        width: 6px;
+        height: 6px;
+        /* background-color: #000; */
+        border-radius: 3px;
+        animation: ani 0.8s infinite linear;
+    }
+    .mouseCur .wheel img { width: 40px; }
+    /* @keyframes ani{
+        0{top:11px;}
+        30% {height:14px;}
+        50%{top:none;bottom:30px;}
+        80%{top:15px;bottom:none;height:6px}
+        100%{top:11px;}
+    } */
+    header { font-family: 'Hind'; padding-top: 40px; padding-bottom: 24px; position: relative; }
+    header .header_wrap ul li ol { display: none; }
+    /* header nav { display: none; } */
+    header .header_wrap ul li { display: inline-block; font-size: 24px; margin-right: 36px;  }
+    header .header_wrap h1 { float: left; text-align: center; }
+    header .header_wrap::after { content: ''; display: block; overflow: hidden; clear: both; }
+    header .header_wrap ul { float: left; width: 700px; margin-top: 25px; }
+    header .header_wrap ul.menu_left li:first-child { margin-left: 40px; }
+    header .header_wrap ul.menu_right li:last-child { margin-right: 0; }
+    .mainBanner { margin-bottom: 154px; }
+    
+
+    
+</style>
+<body>
+    <div class="wrap">
+        <div class="mouseCur"><span class="wheel"><img src="images/RoundA.png" alt=""></span></div>
+        <!--header-->
+        <header class="dw_1600px">
+            <div class="header_wrap">
+                <ul class="menu_left">
+                    <li>
+                        <a href="#">PRODUCT</a>
+                        <ol>
+                            <li>Greentea Skin Care</li>
+                            <li>Greentea Cleanser</li>
+                            <li>Greentea Sun Care</li>
+                            <li>Home Fragrance</li>
+                            <li>Life Fragrance</li>
+                        </ol>
+                    </li>
+
+                    <li>
+                        <a href="#">STORY</a>
+                        <ol>
+                            <li>Brand</li>
+                        </ol>
+                    </li>
+
+                    <li>
+                        <a href="#">STORE</a>
+                    </li>
+
+                    <li>
+                        <a href="#">NEW</a>
+                        <ol>
+                            <li>RARA Moments</li>
+                        </ol>
+                    </li>
+                </ul>
+
+                <h1><a href="index.html"><img src="images/logo.png" alt="logo"></a></h1>
+
+                <ul class="menu_right t_right">
+                    <li><a href="#">LOGIN</a></li>
+                    <li><a href="#">JOIN</a></li>
+                    <li><a href="#">MY</a></li>
+                    <li><a href="#">CART</a></li>
+                    <li id="search_btn"><img src="images/search_icon.png" class="cursor_pointer" alt="search icon image"></li>
+                </ul>
+            </div>
+
+            <style>
+                nav { display: none; width: 1600px; position: absolute; top: 115px; z-index: 10; background-color: #84978ecf; /* margin-top: 20px;  */}
+                nav .search_box img { width: 120px; }
+                /* nav .search_box { padding: 30px 0; } */
+                nav .search_box .input_box input { width: 50%; font-size: 18px; border: none; border: 1px solid #ddd; border-radius: 10px; padding: 10px; margin-right: 10px; }
+                nav .search_box .close_box { float: right; padding-right: 20px; padding-top: 10px; font-size: 22px; cursor: pointer; color:rgb(73 90 83); }
+                nav .search_box .close_box i { margin-left: 5px; }
+                nav .search_box .input_box { float: left; width: 100%; padding-bottom: 30px; }
+                nav .search_box .input_box button { border: none; padding: 10px; font-size: 17px; border-radius: 10px; font-weight: 600; color: #5f8272; background-color: white; }
+
+
+
+            </style>
+
+            <nav class="nav t_center">
+                <div class="search_box">
+                    <form action="" class="search_form">
+                        <div class="close_box t_right">
+                            close<i class="fas fa-times"></i>
+                        </div>
+                        <!-- <a href="#"><img src="images/diffuser6.png" alt="product diffuser"></a> -->
+                        <div class="input_box">
+                            <input type="text">
+                            <button type="submit" value="검색">s e a r c h</button>
+                        </div>
+                    </form>
+    
+                    
+                </div>
+            </nav>
+        </header>
+        <!--// header-->
+
+        <!--contetns-->
+        <div class="contents">
+            <!--mainBanner-->
+            <section class="mainBanner swiper-container dw_1600px">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="images/main_banner1.png" alt="winter banner"></div>
+                    <div class="swiper-slide"><img src="images/main_banner2.png" alt="main banner"></div>
+                </div>
+            </section>
+            <!--// mainBanner-->
+
+            <style>
+                .introArea .iA_top li { float: left; }
+                .introArea .iA_top::after { content: ''; display: block; overflow: hidden; clear: both; }
+                .introArea .iA_top:first-child .iAt_left { margin-top: 235px; }
+                .introArea .iA_top:first-child li:last-child { width: 50%; text-align: right; margin-left: 40px; }
+                .introArea .iA_top .iAt_right .iAtr_top { position: relative; }
+                .introArea .iA_top .iAt_right .iAtr_top .iAtr_img_txt { position: absolute; top: 60%; left: 34%; }
+                .introArea .iA_top .iAt_right .iAtr_top .iAtr_img_txt p { margin-bottom: 20px; color: white; text-shadow: 0 0 5px #fff; }
+                .introArea .iA_top .iAt_right .iAtr_top .iAtr_img_txt p:nth-child(2) { margin-bottom: 40px; }
+                .introArea p { font-size: 24px; font-family: 'Noto Sans KR'; color: #626262;  font-weight: 300; margin-bottom: 26px;  }
+                .introArea .iA_top .iAt_right .iAtr_txt { margin-left: 15%; margin-top: 12%; }
+            </style>
+            <!--introArea-->
+            <section class="introArea dw_1600px">
+                <ul class="iA_top">
+                    <li class="iAt_left"><img src="images/intro_img1.png" alt="intro imnage"></li>
+                    <li class="iAt_right">
+                        <div class="iAtr_top">
+                            <img src="images/intro_img2.png" alt="intro imnage">
+
+                            <div class="iAtr_img_txt over_hidden t_center">
+                                <p>라이프 코스메틱</p>
+                                <p>라운드어라운드</p>
+                                <p>THE LIFE COMSMETIC ROUND A'ROUND</p>
+                            </div>
+                        </div>
+
+                        <div class="iAtr_txt t_left">
+                            <p>소중한 당신을 위해, 조금 더 특별하게</p>
+                            <p>늘, 당신 곁에 머물러</p>
+                            <p>휴식 같은 케어를 제안합니다.</p>
+                        </div>
+                    </li>
+                </ul>
+                <style>
+                    .introArea .iA_bottom { margin-top: 154px; }
+                    .introArea .iA_bottom .iAb_left { margin-top: 273px; margin-left: 8%; position: relative; }
+                    .introArea .iA_bottom .iAb_left .iAb_txt_left { position: absolute; top: 15%; left: 42%; }
+                    .introArea .iA_bottom li { float: left; }
+                    .introArea .iA_bottom::after { content: ''; display: block; overflow: hidden; clear: both; }
+                    .introArea .iA_bottom .iAb_right { width: 53%; }
+                    .iAb_txt_right { margin-top: 68px; text-align: left; margin-left: 32%; }
+                </style>
+
+                <ul class="iA_bottom">
+                    <li class="iAb_left">
+                        <img src="images/intro_img3.png" alt="intro image">
+
+                        <div class="iAb_txt_left">
+                            <p>기분 좋은 아침을 시작으로</p>
+                            <p>편안하게 잠들 때까지,</p>
+                        </div>
+                    </li>
+
+                    <li class="iAb_right t_right">
+                        <img src="images/intro_img4.png" alt="intro image">
+
+                        <div class="iAb_txt_right">
+                            <p>라운드어라운드는 기분 좋은 휴식을 선물하는</p>
+                            <p>NO.1 라이프 코스메틱 브랜드입니다.</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="more_box t_right">
+                    <span><!-- <i class="fas fa-arrow-right"></i> -->BRAND STORY 보러가기</span>
+                </div>
+            </section>
+            <!--// introArea-->
+
+            <!--skinArea-->
+            <section class="skinArea">
+
+                <style>
+                    .title_txt { font-size: 46px; /* margin-top: 140px; */ margin-bottom: 42px; color: #696969; }
+                    .skinArea { margin-top: 140px; }
+                    .skinArea .sA_top .sAt_left { float: left; width: 50%; }
+                    .skinArea .sA_top .sAt_right { float: left; width: 50%; }
+                    .skinArea .sA_top::after { content: ''; display: block; overflow: hidden; clear: both; }
+                    .skinArea .sA_top .sAt_right .sAtr_top,.sA_bottom .sAb_left .sAbl_top  { background-color: #f0f0f0; padding-top: 145px; padding-bottom: 60px; }
+                    .skinArea .sA_top .sAt_right .sAtr_bottom { background-color: #bad2d6; padding-bottom: 147px; }
+                    .skinArea .sA_top .sAt_right .sAtr_bottom h3, .sAbl_bottom h3 { font-size: 32px; color: #4a7177; font-weight: 600; font-family: 'Hind'; padding-top: 80px; padding-bottom: 40px;  }
+                    .skinArea .sA_top .sAt_right .sAtr_bottom ul li,.sAbl_bottom ul li { font-size: 18px; color: #4a7177; margin-bottom: 20px; }  
+                </style> 
+                <h2 class="title_txt t_center">SKIN CARE</h2>
+                <div class="sA_top">
+                    <img class="w100 sAt_left" src="images/skin_care1.png" alt="Greentea foam">
+                    <div class="sAt_right t_center">
+                        <div class="sAtr_top"><a href="#"><img src="images/cleansing_foam.png" alt="cleansing foam image"></a></div>
+                        <div class="sAtr_bottom">
+                            <h3>그린티 약산성 클렌징 폼</h3>
+                            <ul>
+                                <li>촉촉한 거품으로 피부진정을 도와주고</li>
+                                <li>건강한 피부의 pH로 가꾸어주는</li>
+                                <li>'착한' 그린티 약산성 클렌저는 어떠세요?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <style>
+                    .sA_bottom .sAb_left,.sA_bottom .sAb_right { float: left; width: 50%; }
+                    .sA_bottom::after { content: ''; display: block; overflow: hidden; clear: both; }
+                    .sA_bottom .sAb_left .sAbl_bottom { background-color: #d6e3db; padding-bottom: 115px; }
+                    .pro_txt { margin-bottom: 176px; }
+                </style>
+
+                <div class="sA_bottom">
+                    <div class="sAb_left t_center">
+                        <div class="sAbl_top"><a href="#"><img src="images/sun_lotion.png" alt="sunlotion image"></a></div>
+                        <div class="sAbl_bottom">
+                            <h3>그린티 시카 선로션</h3>
+                            <ul>
+                                <li>피부에는 순하게, 자외선은 강력하게 차단해 주는</li>
+                                <li>수분밀착! 마일드 선로션 SPF50+, PA++++</li>
+                                <li>자외선과 건조함으로 인한 손상은 방어하고</li>
+                                <li><strong>'녹차와 병풀'</strong>이 피부를 진정시킵니다</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <img class="sAb_right" src="images/skin_care2.png" alt="sunlotion">
+                </div>
+                
+            </section>
+            <!--// skinArea-->
+
+            <script>
+                $(document).ready( function(){
+
+                    var mainswiper = new Swiper('.product_slide', {
+                        slidesPerView: 4,
+                        spaceBetween: 10,
+
+                        loop: true,
+                        // effect: 'fade',
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                        autoplay: {
+                            delay: 4000,
+                        }
+                    });
+                });
+            </script>
+
+            <!--productArea-->
+            <section class="productArea dw_1600px">
+                <h2 class="title_txt t_center pro_txt">RECOMMENDED PRODUCTS</h2>
+                <div class="swiper-container product_slide">
+                    <!--Add arrows-->
+                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
+
+                    <style>
+                        /* .productArea .product_slide .swiper-wrapper { width: 100%; max-width: 1000px; margin: 0 auto; text-align: center; } */
+                        .productArea { margin-top: 140px; margin-bottom: 208px; }
+                        .productArea .more_box { margin-top: 30px; font-size: 22px; }
+                        .productArea .product_slide p { margin-top: 20px; }
+                    </style>
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide t_center">
+                            <img src="images/lovely_diffuser.png" alt="lovely_diffuser">
+                            <p>선인장 디퓨저</p>
+                        </div>
+
+                        <div class="swiper-slide t_center">
+                            <img src="images/fragrance.png" alt="fragrance image">
+                            <p>선인장 디퓨저</p>
+                        </div>
+
+                        <div class="swiper-slide t_center">
+                            <img src="images/diffuser7.png" class="diffuser_6" alt="diffuser image">
+                            <p>선인장 디퓨저</p>
+                        </div>
+
+                        <div class="swiper-slide t_center">
+                            <img src="images/essense.png" alt="essense image">
+                            <p>선인장 디퓨저</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="more_box t_right">
+                    <span>more</span>
+                </div>
+            </section>
+            <!--// productArea-->
+
+            <style>
+                .raraArea { margin-top: 140px; margin-bottom: 250px; }
+                .raraArea .momentsBox figure { float: left; width: 30%; text-align: center; margin-right: 3%; box-shadow: 7px 4px 20px #b5b5b5;  transition: .3s;}
+                .raraArea .momentsBox::after { content: ''; display: block; overflow: hidden; clear: both; }
+                .raraArea p:not(.fig_p) { font-size: 18px; color: #a0a0a0; margin-bottom: 90px; }
+                .raraArea .momentsBox figure img { width: 100%;  }
+                .raraArea .momentsBox figure:hover { transform: scale(1.05); transition: .3s; }
+                .raraArea .momentsBox figure figcaption { padding: 40px 0 60px 26px; /* margin-bottom: 250px;  */background-color: #f3f3f3; text-align: left; }
+                .raraArea .momentsBox figure:first-child { margin-left: 2%; }
+                .raraArea .momentsBox figure:last-child { margin-right: 0; }
+                .raraArea .momentsBox figure figcaption h3 { font-size: 22px; }
+                .raraArea .momentsBox figure figcaption .fig_p { font-size: 18px; margin-top: 30px; }
+            </style>
+
+            <!--raraArea-->
+            <section class="raraArea dw_1600px">
+                <h2 class="title_txt t_center">RARA Moments</h2>
+                <p class="t_center">라운드어라운드와 다양한 콘텐츠를 만나보세요.</p>
+
+                <div class="momentsBox">
+                    <figure>
+                        <img src="images/rara_img1.png" alt="moments images">
+                        <figcaption>
+                            <h3>RARA Moments</h3>
+                            <p class="fig_p">그린티가 만들어준 '피부 휴식' 습관</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure>
+                        <img src="images/rara_img2.png" alt="moments images">
+                        <figcaption>
+                            <h3>RARA Moments</h3>
+                            <p class="fig_p">꽃잎도 향기도 시들지 않는 드라이플라워 디퓨저</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure>
+                        <img src="images/rara_img3.png" alt="moments images">
+                        <figcaption>
+                            <h3>RARA Moments</h3>
+                            <p class="fig_p">바라만 봐도 힐링, 내 공간 속 초록이 선인장 디퓨저</p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+            <!--// raraArea-->
+
+            <style>
+                .fixedArea { background-size: auto; background-image: url('images/fixed_banner.png'); background-repeat: no-repeat; background-attachment: fixed;  }
+            </style>
+            <div class="fixedArea">
+            </div>
+            
+            <style>
+                .fraArea { padding-top: 100px; padding-bottom: 300px; background-color: #f8f0e930; }
+                .fra_wrap { margin-top: 100px; }
+                .fra_wrap .fraA_left { float: left; width: 50%; text-align: center; margin-top: 18.5%; }
+                .fra_wrap::after { content: ''; display: block; overflow: hidden; clear: both; }
+                .fra_wrap .fraA_right { float: left; text-align: right; }
+            </style>
+            <section class="fraArea">
+                <h2 class="title_txt t_center">Fragrance</h2>
+                
+                <div class="fra_wrap">
+                    <div class="fraA_left">
+                        <img src="images/bloom_edition.png" alt="bloom edition image">
+                    </div>
+    
+                    <div class="fraA_right">
+                        <img src="images/fragrance_img.png" alt="fragrance img">
+                    </div>
+                </div>
+                
+            </section>
+        </div>
+        <!--// contents-->
+
+        <style>
+            footer { background-color: #84978e8f;  }
+            footer .ft_wrap { padding-top: 52px; padding-bottom: 46px; }
+            footer .ft_wrap .ft_top { margin-bottom: 50px; }
+            footer .ft_wrap .ft_middle ul { margin-bottom: 30px; }
+            footer .ft_wrap .ft_middle ul li { display: inline-block; margin-right: 20px; }
+            footer .ft_wrap ul li { margin-bottom: 20px; }
+        </style>
+
+        <footer class="footer">
+            <div class="ft_wrap dw_1600px">
+                <div class="ft_top"><img src="images/logo.png" alt="logo image"></div>      
+                
+                <div class="ft_middle">
+                    <ul>
+                        <li><a href="#">개인정보처리방침</a></li>
+                        <li><a href="#">이용약관</a></li>
+                        <li><a href="#">법적고지</a></li>
+                    </ul>
+                </div>  
+
+                <div class="ft_bottom">
+                    <ul>
+                        <li>씨제이올리브영주식회사 대표이사 : 구창근</li>
+                        <li>사업자등록번호: 809-81-01574 <strong>고객센터 : 1522-0082</strong></li>
+                        <li>주소: (04323) 서울특별시 용산구 한강대로 366 (동자동) 6층</li>
+                        <li>Copyright ©2019 CJ OliveYoung. All rights reserved.</li>
+                    </ul>
+                </div>
+            </div>  
+        </footer>
+    </div>
+    <!--// wrap-->
+    
+</body>
+</html>
