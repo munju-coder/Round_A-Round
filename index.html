@@ -18,8 +18,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <style>
-    .nav_fix { position: fixed; width:100%; top: 0; z-index: 30; padding-top: 40px;
-    padding-bottom: 24px;  }
+    .nav_fix { position: fixed; /* background-color: #edecf0; */ width: 1600px; top: 0; z-index: 30; padding-top: 20px; padding-bottom: 10px;  }
         
 </style>
 <script>
@@ -57,10 +56,21 @@
 
             if( $(window).scrollTop() >= 300){
                 $('.header_wrap').addClass('nav_fix');
+                $('.header ol').css('top','37px');
+                
             }else {
                 $('.header_wrap').removeClass('nav_fix');
+                
             }
         });
+
+        // $(window).scroll( function(){
+        //     if ($(this).scrollTop() > 300) {
+        //         $('.introArea .iA_top:first-child li:last-child').css('opacity',0.8);
+        //     }else{
+        //         $('header').css('opacity',1);
+        //     }
+        // });
 
     });
 </script>
@@ -74,6 +84,7 @@
     .t_center { text-align: center; }
     .t_right { text-align: right; }
     .cursor_pointer { cursor: pointer; }
+    .ml40px { margin-left: 40px; }
     .mouseCur {
         display: block;
         width: 40px;
@@ -110,16 +121,89 @@
         100%{top:11px;}
     } */
     header { font-family: 'Hind'; padding-top: 40px; padding-bottom: 24px; position: relative; }
-    header .header_wrap ul li ol { display: none; }
-    /* header nav { display: none; } */
+    /* header .header_wrap ul li ol { display: none; } */
+    header .header_wrap ul li ol { display: flex; flex-direction: column; text-align: left; position: absolute; top: 51px; background-color: rgb(255, 5, 5); border-radius: 0 0 10px 10px; z-index: 100; /* padding-top: 10px;  */} 
+    header .header_wrap ul li ol li { font-size: 16px; padding-bottom: 20px; margin-right: 0; text-align: left; padding: 10px 10px 16px 10px; } 
+    /* header .header_wrap ul li ol li a { color: white; font-weight: 600; } */
     header .header_wrap ul li { display: inline-block; font-size: 24px; margin-right: 36px;  }
+    
     header .header_wrap h1 { float: left; text-align: center; }
     header .header_wrap::after { content: ''; display: block; overflow: hidden; clear: both; }
-    header .header_wrap ul { float: left; width: 700px; margin-top: 25px; }
-    header .header_wrap ul.menu_left li:first-child { margin-left: 40px; }
-    header .header_wrap ul.menu_right li:last-child { margin-right: 0; }
+    header .header_wrap ul { float: left; position: relative; width: 700px; margin-top: 25px; user-select: none; }
+    /* header .header_wrap ul.menu_left li:first-child:not(ol li) { margin-left: 40px; } */
+    header .header_wrap ul.menu_right li:last-child:not(ol li) { margin-right: 0; }
     .mainBanner { margin-bottom: 154px; }
+    nav { display: none; width: 1600px; position: absolute; top: 115px; z-index: 10; background-color: #84978ecf; /* margin-top: 20px;  */}
+    nav .search_box img { width: 120px; }
+    /* nav .search_box { padding: 30px 0; } */
+    nav .search_box .input_box input { width: 50%; font-size: 18px; border: none; border: 1px solid #ddd; border-radius: 10px; padding: 10px; margin-right: 10px; }
+    nav .search_box .close_box { float: right; padding-right: 20px; padding-top: 10px; font-size: 22px; cursor: pointer; color:rgb(73 90 83); }
+    nav .search_box .close_box i { margin-left: 5px; }
+    nav .search_box .input_box { float: left; width: 100%; padding-bottom: 30px; }
+    nav .search_box .input_box button { border: none; padding: 10px; font-size: 17px; border-radius: 10px; font-weight: 600; color: #5f8272; background-color: white; }
+
+    .introArea .iA_top li { float: left; }
+    .introArea .iA_top::after { content: ''; display: block; overflow: hidden; clear: both; }
+    .introArea .iA_top:first-child .iAt_left { margin-top: 235px; }
+    .introArea .iA_top:first-child li { transition: .3s; }
+    .introArea .iA_top:first-child li:last-child { width: 50%; text-align: right; margin-left: 40px; /* opacity: 0; */ }
+    .introArea .iA_top .iAt_right .iAtr_top { position: relative;  margin-bottom: 12%; }
+    .introArea .iA_top .iAt_right .iAtr_top .iAtr_img_txt { position: absolute; top: 60%; left: 34%; }
+    .introArea .iA_top .iAt_right .iAtr_top .iAtr_img_txt p { margin-bottom: 20px; color: white; text-shadow: 0 0 5px #fff; }
+    .introArea .iA_top .iAt_right .iAtr_top .iAtr_img_txt p:nth-child(2) { margin-bottom: 40px; }
+    .introArea p { font-size: 24px; font-family: 'Noto Sans KR'; color: #626262;  font-weight: 300; margin-bottom: 26px;  }
+    .introArea .iA_top .iAt_right .iAtr_txt { margin-left: 15%;  }
+    .introArea .iA_bottom { margin-top: 154px; }
+    .introArea .iA_bottom .iAb_left { margin-top: 273px; margin-left: 8%; position: relative; }
+    .introArea .iA_bottom .iAb_left .iAb_txt_left { position: absolute; top: 15%; left: 42%; }
+    .introArea .iA_bottom li { float: left; transition: .3s; }
+    .introArea .iA_bottom::after { content: ''; display: block; overflow: hidden; clear: both; }
+    .introArea .iA_bottom .iAb_right { width: 53%; }
+    .iAb_txt_right { margin-top: 68px; text-align: left; margin-left: 32%; }
+
+    .title_txt { font-size: 36px; margin-bottom: 42px; color: #696969; }
+    .skinArea { margin-top: 140px; }
+    .skinArea h2 { color: #c3d6da; }
+    .skinArea .sA_top .sAt_left { float: left; width: 50%; }
+    .skinArea .sA_top .sAt_right { float: left; width: 50%; }
+    .skinArea .sA_top::after { content: ''; display: block; overflow: hidden; clear: both; }
+    .skinArea .sA_top .sAt_right .sAtr_top,.sA_bottom .sAb_left .sAbl_top  { background-color: #f0f0f0; padding-top: 145px; padding-bottom: 60px; }
+    .skinArea .sA_top .sAt_right .sAtr_bottom { background-color: #bad2d6; padding-bottom: 147px; }
+    .skinArea .sA_top .sAt_right .sAtr_bottom h3, .sAbl_bottom h3 { font-size: 32px; color: #4a7177; font-weight: 600; font-family: 'Hind'; padding-top: 80px; padding-bottom: 40px;  }
+    .skinArea .sA_top .sAt_right .sAtr_bottom ul li,.sAbl_bottom ul li { font-size: 18px; color: #4a7177; margin-bottom: 20px; }  
+
+    .sA_bottom .sAb_left,.sA_bottom .sAb_right { float: left; width: 50%; }
+    .sA_bottom::after { content: ''; display: block; overflow: hidden; clear: both; }
+    .sA_bottom .sAb_left .sAbl_bottom { background-color: #d6e3db; padding-bottom: 115px; }
+    .pro_txt { margin-bottom: 176px; }
+
+    .productArea { margin-top: 140px; margin-bottom: 208px; }
+    .productArea .more_box { margin-top: 30px; font-size: 22px; }
+    .productArea .product_slide p { margin-top: 20px; }
+
+    .raraArea { margin-top: 140px; margin-bottom: 250px; }
+    .raraArea .momentsBox figure { float: left; width: 30%; text-align: center; margin-right: 3%; box-shadow: 7px 4px 20px #b5b5b5;  transition: .3s;}
+    .raraArea .momentsBox::after { content: ''; display: block; overflow: hidden; clear: both; }
+    .raraArea p:not(.fig_p) { font-size: 18px; color: #a0a0a0; margin-bottom: 90px; }
+    .raraArea .momentsBox figure img { width: 100%;  }
+    .raraArea .momentsBox figure:hover { transform: scale(1.05); transition: .3s; }
+    .raraArea .momentsBox figure figcaption { padding: 40px 0 60px 26px; /* margin-bottom: 250px;  */background-color: #f3f3f3; text-align: left; }
+    .raraArea .momentsBox figure:first-child { margin-left: 2%; }
+    .raraArea .momentsBox figure:last-child { margin-right: 0; }
+    .raraArea .momentsBox figure figcaption h3 { font-size: 22px; }
+    .raraArea .momentsBox figure figcaption .fig_p { font-size: 18px; margin-top: 30px; }
+    .fraArea { padding-top: 100px; padding-bottom: 300px; background-color: #f8f0e930; }
+    .fra_wrap { margin-top: 100px; }
+    .fra_wrap .fraA_left { float: left; width: 50%; text-align: center; margin-top: 18.5%; }
+    .fra_wrap::after { content: ''; display: block; overflow: hidden; clear: both; }
+    .fra_wrap .fraA_right { float: left; text-align: right; }
     
+    /* footer { background-color: #84978e8f;  } */
+    footer .ft_wrap { padding-top: 52px; padding-bottom: 46px; }
+    footer .ft_wrap .ft_top { margin-bottom: 50px; }
+    footer .ft_wrap .ft_middle ul { margin-bottom: 30px; }
+    footer .ft_wrap .ft_middle ul li { display: inline-block; margin-right: 20px; }
+    footer .ft_wrap ul li { margin-bottom: 20px; }
 
     
 </style>
@@ -130,32 +214,35 @@
         <header class="dw_1600px">
             <div class="header_wrap">
                 <ul class="menu_left">
-                    <li>
+                    <li class="ml40px">
                         <a href="#">PRODUCT</a>
                         <ol>
-                            <li>Greentea Skin Care</li>
-                            <li>Greentea Cleanser</li>
-                            <li>Greentea Sun Care</li>
-                            <li>Home Fragrance</li>
-                            <li>Life Fragrance</li>
+                            <li><a href="#"> Skin Care</a></li>
+                            <li><a href="#"> Cleanser</a></li>
+                            <li><a href="#"> Sun Care</a></li>
+                            <li><a href="#">Home Fragrance</a></li>
+                            <li><a href="#">Life Fragrance</a></li>
                         </ol>
                     </li>
 
                     <li>
                         <a href="#">STORY</a>
                         <ol>
-                            <li>Brand</li>
+                            <li><a href="#">Brand</a></li>
                         </ol>
                     </li>
 
                     <li>
                         <a href="#">STORE</a>
+                        <ol>
+                            <li><a href="#">매장찾기</a></li>
+                        </ol>
                     </li>
 
                     <li>
                         <a href="#">NEW</a>
                         <ol>
-                            <li>RARA Moments</li>
+                            <li><a href="#">RARA Moments</a></li>
                         </ol>
                     </li>
                 </ul>
@@ -171,20 +258,6 @@
                 </ul>
             </div>
 
-            <style>
-                nav { display: none; width: 1600px; position: absolute; top: 115px; z-index: 10; background-color: #84978ecf; /* margin-top: 20px;  */}
-                nav .search_box img { width: 120px; }
-                /* nav .search_box { padding: 30px 0; } */
-                nav .search_box .input_box input { width: 50%; font-size: 18px; border: none; border: 1px solid #ddd; border-radius: 10px; padding: 10px; margin-right: 10px; }
-                nav .search_box .close_box { float: right; padding-right: 20px; padding-top: 10px; font-size: 22px; cursor: pointer; color:rgb(73 90 83); }
-                nav .search_box .close_box i { margin-left: 5px; }
-                nav .search_box .input_box { float: left; width: 100%; padding-bottom: 30px; }
-                nav .search_box .input_box button { border: none; padding: 10px; font-size: 17px; border-radius: 10px; font-weight: 600; color: #5f8272; background-color: white; }
-
-
-
-            </style>
-
             <nav class="nav t_center">
                 <div class="search_box">
                     <form action="" class="search_form">
@@ -197,8 +270,6 @@
                             <button type="submit" value="검색">s e a r c h</button>
                         </div>
                     </form>
-    
-                    
                 </div>
             </nav>
         </header>
@@ -215,23 +286,31 @@
             </section>
             <!--// mainBanner-->
 
-            <style>
-                .introArea .iA_top li { float: left; }
-                .introArea .iA_top::after { content: ''; display: block; overflow: hidden; clear: both; }
-                .introArea .iA_top:first-child .iAt_left { margin-top: 235px; }
-                .introArea .iA_top:first-child li:last-child { width: 50%; text-align: right; margin-left: 40px; }
-                .introArea .iA_top .iAt_right .iAtr_top { position: relative; }
-                .introArea .iA_top .iAt_right .iAtr_top .iAtr_img_txt { position: absolute; top: 60%; left: 34%; }
-                .introArea .iA_top .iAt_right .iAtr_top .iAtr_img_txt p { margin-bottom: 20px; color: white; text-shadow: 0 0 5px #fff; }
-                .introArea .iA_top .iAt_right .iAtr_top .iAtr_img_txt p:nth-child(2) { margin-bottom: 40px; }
-                .introArea p { font-size: 24px; font-family: 'Noto Sans KR'; color: #626262;  font-weight: 300; margin-bottom: 26px;  }
-                .introArea .iA_top .iAt_right .iAtr_txt { margin-left: 15%; margin-top: 12%; }
-            </style>
+            <script>
+                $(document).ready( function(){
+                    $(window).on("load",function(){
+
+                        $(window).scroll( function(){
+                            $('.iA_top li ,.iA_bottom li').each( function(){
+                                var objectBottom = $(this).offset().top + $(this).outerHeight();
+                                var windowBottom = $(window).scrollTop() + $(window).innerHeight();
+
+                                if(objectBottom < windowBottom){
+                                
+                                    if ($(this).css("opacity")==0) {$(this).fadeTo(200,1);}
+                                }else {
+                                    if ($(this).css("opacity")==1) {$(this).fadeTo(200,0);}
+                                }
+                            });
+                        });  $(window).scroll();
+                    }); 
+                });
+            </script>
             <!--introArea-->
             <section class="introArea dw_1600px">
                 <ul class="iA_top">
-                    <li class="iAt_left"><img src="images/intro_img1.png" alt="intro imnage"></li>
-                    <li class="iAt_right">
+                    <li class="iAt_left" ><img src="images/intro_img1.png" alt="intro imnage"></li>
+                    <li class="iAt_right" >
                         <div class="iAtr_top">
                             <img src="images/intro_img2.png" alt="intro imnage">
 
@@ -249,15 +328,6 @@
                         </div>
                     </li>
                 </ul>
-                <style>
-                    .introArea .iA_bottom { margin-top: 154px; }
-                    .introArea .iA_bottom .iAb_left { margin-top: 273px; margin-left: 8%; position: relative; }
-                    .introArea .iA_bottom .iAb_left .iAb_txt_left { position: absolute; top: 15%; left: 42%; }
-                    .introArea .iA_bottom li { float: left; }
-                    .introArea .iA_bottom::after { content: ''; display: block; overflow: hidden; clear: both; }
-                    .introArea .iA_bottom .iAb_right { width: 53%; }
-                    .iAb_txt_right { margin-top: 68px; text-align: left; margin-left: 32%; }
-                </style>
 
                 <ul class="iA_bottom">
                     <li class="iAb_left">
@@ -287,18 +357,6 @@
 
             <!--skinArea-->
             <section class="skinArea">
-
-                <style>
-                    .title_txt { font-size: 36px; /* margin-top: 140px; */ margin-bottom: 42px; color: #696969; }
-                    .skinArea { margin-top: 140px; }
-                    .skinArea .sA_top .sAt_left { float: left; width: 50%; }
-                    .skinArea .sA_top .sAt_right { float: left; width: 50%; }
-                    .skinArea .sA_top::after { content: ''; display: block; overflow: hidden; clear: both; }
-                    .skinArea .sA_top .sAt_right .sAtr_top,.sA_bottom .sAb_left .sAbl_top  { background-color: #f0f0f0; padding-top: 145px; padding-bottom: 60px; }
-                    .skinArea .sA_top .sAt_right .sAtr_bottom { background-color: #bad2d6; padding-bottom: 147px; }
-                    .skinArea .sA_top .sAt_right .sAtr_bottom h3, .sAbl_bottom h3 { font-size: 32px; color: #4a7177; font-weight: 600; font-family: 'Hind'; padding-top: 80px; padding-bottom: 40px;  }
-                    .skinArea .sA_top .sAt_right .sAtr_bottom ul li,.sAbl_bottom ul li { font-size: 18px; color: #4a7177; margin-bottom: 20px; }  
-                </style> 
                 <h2 class="title_txt t_center">SKIN CARE</h2>
                 <div class="sA_top">
                     <img class="w100 sAt_left" src="images/skin_care1.png" alt="Greentea foam">
@@ -314,12 +372,6 @@
                         </div>
                     </div>
                 </div>
-                <style>
-                    .sA_bottom .sAb_left,.sA_bottom .sAb_right { float: left; width: 50%; }
-                    .sA_bottom::after { content: ''; display: block; overflow: hidden; clear: both; }
-                    .sA_bottom .sAb_left .sAbl_bottom { background-color: #d6e3db; padding-bottom: 115px; }
-                    .pro_txt { margin-bottom: 176px; }
-                </style>
 
                 <div class="sA_bottom">
                     <div class="sAb_left t_center">
@@ -362,18 +414,12 @@
 
             <!--productArea-->
             <section class="productArea dw_1600px">
-                <h2 class="title_txt t_center pro_txt">RECOMMENDED PRODUCTS</h2>
+                <h2 class="title_txt t_center pro_txt">Recommended Products</h2>
                 <div class="swiper-container product_slide">
                     <!--Add arrows-->
-                    <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>
-                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
+                    <!-- <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div> -->
 
-                    <style>
-                        /* .productArea .product_slide .swiper-wrapper { width: 100%; max-width: 1000px; margin: 0 auto; text-align: center; } */
-                        .productArea { margin-top: 140px; margin-bottom: 208px; }
-                        .productArea .more_box { margin-top: 30px; font-size: 22px; }
-                        .productArea .product_slide p { margin-top: 20px; }
-                    </style>
                     <div class="swiper-wrapper">
                         <div class="swiper-slide t_center">
                             <img src="images/lovely_diffuser.png" alt="lovely_diffuser">
@@ -403,27 +449,13 @@
             </section>
             <!--// productArea-->
 
-            <style>
-                .raraArea { margin-top: 140px; margin-bottom: 250px; }
-                .raraArea .momentsBox figure { float: left; width: 30%; text-align: center; margin-right: 3%; box-shadow: 7px 4px 20px #b5b5b5;  transition: .3s;}
-                .raraArea .momentsBox::after { content: ''; display: block; overflow: hidden; clear: both; }
-                .raraArea p:not(.fig_p) { font-size: 18px; color: #a0a0a0; margin-bottom: 90px; }
-                .raraArea .momentsBox figure img { width: 100%;  }
-                .raraArea .momentsBox figure:hover { transform: scale(1.05); transition: .3s; }
-                .raraArea .momentsBox figure figcaption { padding: 40px 0 60px 26px; /* margin-bottom: 250px;  */background-color: #f3f3f3; text-align: left; }
-                .raraArea .momentsBox figure:first-child { margin-left: 2%; }
-                .raraArea .momentsBox figure:last-child { margin-right: 0; }
-                .raraArea .momentsBox figure figcaption h3 { font-size: 22px; }
-                .raraArea .momentsBox figure figcaption .fig_p { font-size: 18px; margin-top: 30px; }
-            </style>
-
             <!--raraArea-->
             <section class="raraArea dw_1600px">
                 <h2 class="title_txt t_center">RARA Moments</h2>
                 <p class="t_center">라운드어라운드와 다양한 콘텐츠를 만나보세요.</p>
 
                 <div class="momentsBox">
-                    <figure>
+                    <figure class="cursor_pointer">
                         <img src="images/rara_img1.png" alt="moments images">
                         <figcaption>
                             <h3>RARA Moments</h3>
@@ -431,7 +463,7 @@
                         </figcaption>
                     </figure>
 
-                    <figure>
+                    <figure class="cursor_pointer">
                         <img src="images/rara_img2.png" alt="moments images">
                         <figcaption>
                             <h3>RARA Moments</h3>
@@ -439,7 +471,7 @@
                         </figcaption>
                     </figure>
 
-                    <figure>
+                    <figure class="cursor_pointer">
                         <img src="images/rara_img3.png" alt="moments images">
                         <figcaption>
                             <h3>RARA Moments</h3>
@@ -450,19 +482,7 @@
             </section>
             <!--// raraArea-->
 
-            <style>
-                .fixedArea { background-size: auto; background-image: url('images/fixed_banner.png'); background-repeat: no-repeat; background-attachment: fixed;  }
-            </style>
-            <div class="fixedArea">
-            </div>
-            
-            <style>
-                .fraArea { padding-top: 100px; padding-bottom: 300px; background-color: #f8f0e930; }
-                .fra_wrap { margin-top: 100px; }
-                .fra_wrap .fraA_left { float: left; width: 50%; text-align: center; margin-top: 18.5%; }
-                .fra_wrap::after { content: ''; display: block; overflow: hidden; clear: both; }
-                .fra_wrap .fraA_right { float: left; text-align: right; }
-            </style>
+            <!--fraArea-->
             <section class="fraArea">
                 <h2 class="title_txt t_center">Fragrance</h2>
                 
@@ -475,20 +495,12 @@
                         <img src="images/fragrance_img.png" alt="fragrance img">
                     </div>
                 </div>
-                
             </section>
+            <!--// fraArea-->
         </div>
         <!--// contents-->
 
-        <style>
-            footer { background-color: #84978e8f;  }
-            footer .ft_wrap { padding-top: 52px; padding-bottom: 46px; }
-            footer .ft_wrap .ft_top { margin-bottom: 50px; }
-            footer .ft_wrap .ft_middle ul { margin-bottom: 30px; }
-            footer .ft_wrap .ft_middle ul li { display: inline-block; margin-right: 20px; }
-            footer .ft_wrap ul li { margin-bottom: 20px; }
-        </style>
-
+        <!--footer-->
         <footer class="footer">
             <div class="ft_wrap dw_1600px">
                 <div class="ft_top"><img src="images/logo.png" alt="logo image"></div>      
@@ -511,8 +523,8 @@
                 </div>
             </div>  
         </footer>
+        <!--// footer-->
     </div>
     <!--// wrap-->
-    
 </body>
 </html>
