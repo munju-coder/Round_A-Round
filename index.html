@@ -18,8 +18,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <style>
-    .nav_fix { position: fixed; width:100%; top: 100px; z-index: 30; padding-top: 40px;
-    padding-bottom: 24px; }
+    .nav_fix { position: fixed; width:100%; top: 0; z-index: 30; padding-top: 40px;
+    padding-bottom: 24px;  }
         
 </style>
 <script>
@@ -53,8 +53,9 @@
         });
 
         $(window).scroll( function(){
-            console.log( $(this).scrollTop() );
-            if( $(this).scrollTop() >= $('header').height()){
+            console.log( $(this).scrollTop() ); //스크롤위치, 방향값은 top, left만 존재함,
+
+            if( $(window).scrollTop() >= 300){
                 $('.header_wrap').addClass('nav_fix');
             }else {
                 $('.header_wrap').removeClass('nav_fix');
@@ -288,7 +289,7 @@
             <section class="skinArea">
 
                 <style>
-                    .title_txt { font-size: 46px; /* margin-top: 140px; */ margin-bottom: 42px; color: #696969; }
+                    .title_txt { font-size: 36px; /* margin-top: 140px; */ margin-bottom: 42px; color: #696969; }
                     .skinArea { margin-top: 140px; }
                     .skinArea .sA_top .sAt_left { float: left; width: 50%; }
                     .skinArea .sA_top .sAt_right { float: left; width: 50%; }
