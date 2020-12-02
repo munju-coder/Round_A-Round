@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROUND A'ROUND</title>
+    <!--AOS_plugin-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> 
     <!--jquery-->
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="lib/jquery.transit.min.js"></script>
@@ -67,6 +70,12 @@
             }
         });
 
+        $("#search_btn").click(function () {
+            $('html').animate({
+                scrollTop: 0
+            }, 500);
+        });
+
         // $(window).scroll( function(){
         //     if ($(this).scrollTop() > 300) {
         //         $('.introArea .iA_top:first-child li:last-child').css('opacity',0.8);
@@ -75,158 +84,28 @@
         //     }
         // });
 
+        // $(window).scroll(function(e) {
+        //     if( $('body')[0].scrollHeight < $(window).scrollTop()+$(window).height()-200 ) {
+        //         $('.scroll-fade:last').removeClass("dj-viewport");
+        //         return false;
+        //     }
+        //     $('.dj-viewport').each(function(){
+        //         try {
+        //             if( $(this).isVisible(200) ) {
+        //                 $(this).removeClass("dj-viewport");
+        //             }
+        //         } finally {}
+        //     });
+        // }).scroll();
+
+
     });
 </script>
-<style>
-    /*common*/
-    .w100 { width: 100%; }
-    input { outline: none;  }
-    .dw_1600px { width: 100%; max-width: 1600px; margin: 0 auto; }
-    .over_hidden { overflow: hidden; }
-    .t_left { text-align: left; }
-    .t_center { text-align: center; }
-    .t_right { text-align: right; }
-    .cursor_pointer { cursor: pointer; }
-    .ml40px { margin-left: 40px; }
-    .mouseCur {
-        display: block;
-        width: 40px;
-        height: 60px;
-        /* border: 3px solid #000; */
-        position: fixed;
-        top: -999px;
-        left: -999px;
-        /* background-color: #fff; */
-        margin: -30px 0 0 -20px;
-        border-radius: 20px;
-        cursor: none;
-        z-index: 100;
-    }
-
-    .mouseCur .wheel {
-        display: inline-block;
-        position: absolute;
-        top: 11px;
-        left: 50%;
-        margin-left: -3px;
-        width: 6px;
-        height: 6px;
-        /* background-color: #000; */
-        border-radius: 3px;
-        animation: ani 0.8s infinite linear;
-    }
-    .mouseCur .wheel img { width: 40px; }
-    /* @keyframes ani{
-        0{top:11px;}
-        30% {height:14px;}
-        50%{top:none;bottom:30px;}
-        80%{top:15px;bottom:none;height:6px}
-        100%{top:11px;}
-    } */
-    @keyframes sub-menu-moveup {
-        from {
-            opacity: 0;
-            transform: translate(50px);
-        }
-        to {
-            opacity: 1;
-            transform: translate(0);
-        }
-    }
-
-    header { font-family: 'Hind'; padding-top: 40px; padding-bottom: 24px; position: relative; }
-    header .header_wrap ul li ol { display: flex; display: none; flex-direction: column; text-align: left; position: absolute; top: 51px; border-radius: 0 0 10px 10px; z-index: 100; animation: sub-menu-moveup .4s; } 
-
-    
-    header .header_wrap ul li:hover ol { display: flex; animation-name: sub-menu-moveup; animation-duration: .5s; }
-
-
-    header .header_wrap ul li ol li { font-size: 16px; padding-bottom: 20px; margin-right: 0; text-align: left; padding: 10px 10px 16px 10px; } 
-    header .header_wrap ul li { display: inline-block; font-size: 24px; margin-right: 36px;  }
-    
-    header .header_wrap h1 { float: left; text-align: center; }
-    header .header_wrap::after { content: ''; display: block; overflow: hidden; clear: both; }
-    header .header_wrap ul { float: left; position: relative; width: 700px; margin-top: 25px; user-select: none; }
-    header .header_wrap ul.menu_right li:last-child:not(ol li) { margin-right: 0; }
-    .mainBanner { margin-bottom: 154px; }
-    nav { display: none; width: 1600px; position: absolute; top: 115px; z-index: 10; background-color: #84978ecf; }
-    nav .search_box img { width: 120px; }
-    /* nav .search_box { padding: 30px 0; } */
-    nav .search_box .input_box input { width: 50%; font-size: 18px; border: none; border: 1px solid #ddd; border-radius: 10px; padding: 10px; margin-right: 10px; }
-    nav .search_box .close_box { float: right; padding-right: 20px; padding-top: 10px; font-size: 22px; cursor: pointer; color:rgb(73 90 83); }
-    nav .search_box .close_box i { margin-left: 5px; }
-    nav .search_box .input_box { float: left; width: 100%; padding-bottom: 30px; }
-    nav .search_box .input_box button { border: none; padding: 10px; font-size: 17px; border-radius: 10px; font-weight: 600; color: #5f8272; background-color: white; }
-
-    .introArea .iA_top li { float: left; }
-    .introArea .iA_top::after { content: ''; display: block; overflow: hidden; clear: both; }
-    .introArea .iA_top:first-child .iAt_left { margin-top: 235px; }
-    .introArea .iA_top:first-child li { transition: .3s; }
-    .introArea .iA_top:first-child li:last-child { width: 50%; text-align: right; margin-left: 40px;  }
-    .introArea .iA_top .iAt_right .iAtr_top { position: relative;  margin-bottom: 12%; }
-    .introArea .iA_top .iAt_right .iAtr_top .iAtr_img_txt { position: absolute; top: 60%; left: 34%; }
-    .introArea .iA_top .iAt_right .iAtr_top .iAtr_img_txt p { margin-bottom: 20px; color: white; text-shadow: 0 0 5px #fff; }
-    .introArea .iA_top .iAt_right .iAtr_top .iAtr_img_txt p:nth-child(2) { margin-bottom: 40px; }
-    .introArea p { font-size: 24px; font-family: 'Noto Sans KR'; color: #626262;  font-weight: 300; margin-bottom: 26px;  }
-    .introArea .iA_top .iAt_right .iAtr_txt { margin-left: 15%;  }
-    .introArea .iA_bottom { margin-top: 154px; }
-    .introArea .iA_bottom .iAb_left { margin-top: 273px; margin-left: 8%; position: relative; }
-    .introArea .iA_bottom .iAb_left .iAb_txt_left { position: absolute; top: 15%; left: 42%; }
-    .introArea .iA_bottom li { float: left; transition: .3s; }
-    .introArea .iA_bottom::after { content: ''; display: block; overflow: hidden; clear: both; }
-    .introArea .iA_bottom .iAb_right { width: 53%; }
-    .iAb_txt_right { margin-top: 68px; text-align: left; margin-left: 32%; }
-    .introArea .more_box .line_arrow { display: inline-block; width: 60px; height: 3px; background-color: #f3e2cb; text-align: right; margin-right: 10px; margin-bottom: 4px; }
-    .introArea .more_box span { color: #ae927d; }
-
-
-    .title_txt { font-size: 36px; margin-bottom: 42px; color: #696969; }
-    .skinArea { margin-top: 140px; }
-    .skinArea h2 { color: #c3d6da; }
-    .skinArea .sA_top .sAt_left { float: left; width: 50%; }
-    .skinArea .sA_top .sAt_right { float: left; width: 50%; }
-    .skinArea .sA_top::after { content: ''; display: block; overflow: hidden; clear: both; }
-    .skinArea .sA_top .sAt_right .sAtr_top,.sA_bottom .sAb_left .sAbl_top  { background-color: #f0f0f0; padding-top: 145px; padding-bottom: 60px; }
-    .skinArea .sA_top .sAt_right .sAtr_bottom { background-color: #bad2d6; padding-bottom: 147px; }
-    .skinArea .sA_top .sAt_right .sAtr_bottom h3, .sAbl_bottom h3 { font-size: 32px; color: #4a7177; font-weight: 600; font-family: 'Hind'; padding-top: 80px; padding-bottom: 40px;  }
-    .skinArea .sA_top .sAt_right .sAtr_bottom ul li,.sAbl_bottom ul li { font-size: 18px; color: #4a7177; margin-bottom: 20px; }  
-
-    .sA_bottom .sAb_left,.sA_bottom .sAb_right { float: left; width: 50%; }
-    .sA_bottom::after { content: ''; display: block; overflow: hidden; clear: both; }
-    .sA_bottom .sAb_left .sAbl_bottom { background-color: #d6e3db; padding-bottom: 115px; }
-    .pro_txt { margin-bottom: 176px; }
-
-    .productArea { margin-top: 140px; margin-bottom: 208px; }
-    .productArea .more_box { margin-top: 30px; font-size: 22px; }
-    .productArea .product_slide p { margin-top: 20px; }
-
-    .raraArea { margin-top: 140px; margin-bottom: 250px; }
-    .raraArea .momentsBox figure { float: left; width: 30%; text-align: center; margin-right: 3%; box-shadow: 7px 4px 20px #b5b5b5;  transition: .3s;}
-    .raraArea .momentsBox::after { content: ''; display: block; overflow: hidden; clear: both; }
-    .raraArea p:not(.fig_p) { font-size: 18px; color: #a0a0a0; margin-bottom: 90px; }
-    .raraArea .momentsBox figure img { width: 100%;  }
-    .raraArea .momentsBox figure:hover { transform: scale(1.05); transition: .3s; }
-    .raraArea .momentsBox figure figcaption { padding: 40px 0 60px 26px; /* margin-bottom: 250px;  */background-color: #f3f3f3; text-align: left; }
-    .raraArea .momentsBox figure:first-child { margin-left: 2%; }
-    .raraArea .momentsBox figure:last-child { margin-right: 0; }
-    .raraArea .momentsBox figure figcaption h3 { font-size: 22px; }
-    .raraArea .momentsBox figure figcaption .fig_p { font-size: 18px; margin-top: 30px; }
-    .fraArea { padding-top: 100px; padding-bottom: 300px; background-color: #f8f0e930; }
-    .fra_wrap { margin-top: 100px; }
-    .fra_wrap .fraA_left { float: left; width: 50%; text-align: center; margin-top: 18.5%; }
-    .fra_wrap::after { content: ''; display: block; overflow: hidden; clear: both; }
-    .fra_wrap .fraA_right { float: left; text-align: right; }
-    
-    /* footer { background-color: #84978e8f;  } */
-    footer .ft_wrap { padding-top: 52px; padding-bottom: 46px; }
-    footer .ft_wrap .ft_top { margin-bottom: 50px; }
-    footer .ft_wrap .ft_middle ul { margin-bottom: 30px; }
-    footer .ft_wrap .ft_middle ul li { display: inline-block; margin-right: 20px; }
-    footer .ft_wrap ul li { margin-bottom: 20px; }
-
-    
-</style>
 <body>
+    <script>
+        AOS.init();
+    </script>
+
     <div class="wrap">
         <div class="mouseCur"><span class="wheel"><img src="images/RoundA.png" alt=""></span></div>
         <!--header-->
@@ -306,29 +185,32 @@
             <!--// mainBanner-->
 
             <script>
-                $(document).ready( function(){
-                    $(window).on("load",function(){
+                // $(document).ready( function(){
+                //     $(window).on("load",function(){
 
-                        $(window).scroll( function(){
-                            $('.iA_top li ,.iA_bottom li').each( function(){
-                                var objectBottom = $(this).offset().top + $(this).outerHeight();
-                                var windowBottom = $(window).scrollTop() + $(window).innerHeight();
+                //         $(window).scroll( function(){
+                //             $('.iA_top li ,.iA_bottom li').each( function(){
+                //                 var objectBottom = $(this).offset().top + $(this).outerHeight();
+                //                 var windowBottom = $(window).scrollTop() + $(window).innerHeight();
 
-                                if(objectBottom < windowBottom){
-                                    if ( $(this).css("opacity")== 0 ) {$(this).fadeTo(200,1);}
-                                }else {
-                                    if ( $(this).css("opacity")== 1 ) {$(this).fadeTo(200,0);}
-                                }
-                            });
-                        });  $(window).scroll();
-                    }); 
-                });
+                //                 if(objectBottom < windowBottom){
+                //                     if ( $(this).css("opacity")== 0 ) {$(this).fadeTo(200,1);}
+                //                 }else {
+                //                     if ( $(this).css("opacity")== 1 ) {$(this).fadeTo(200,0);}
+                //                 }
+                //             });
+                //         });  $(window).scroll();
+                //     }); 
+                // });
             </script>
             <!--introArea-->
             <section class="introArea dw_1600px">
                 <ul class="iA_top">
-                    <li class="iAt_left" ><img src="images/intro_img1.png" alt="intro imnage"></li>
-                    <li class="iAt_right" >
+                    <li class="iAt_left">
+                        <img src="images/intro_img1.png" alt="intro imnage">
+                    </li>
+
+                    <li class="iAt_right">
                         <div class="iAtr_top">
                             <img src="images/intro_img2.png" alt="intro imnage">
 
@@ -339,7 +221,7 @@
                             </div>
                         </div>
 
-                        <div class="iAtr_txt t_left">
+                        <div class="iAtr_txt t_left" data-aos="fade-up" data-aos-duration="3000">
                             <p>소중한 당신을 위해, 조금 더 특별하게</p>
                             <p>늘, 당신 곁에 머물러</p>
                             <p>휴식 같은 케어를 제안합니다.</p>
@@ -351,7 +233,7 @@
                     <li class="iAb_left">
                         <img src="images/intro_img3.png" alt="intro image">
 
-                        <div class="iAb_txt_left">
+                        <div class="iAb_txt_left" data-aos="fade-up" data-aos-duration="3000">
                             <p>기분 좋은 아침을 시작으로</p>
                             <p>편안하게 잠들 때까지,</p>
                         </div>
@@ -360,7 +242,7 @@
                     <li class="iAb_right t_right">
                         <img src="images/intro_img4.png" alt="intro image">
 
-                        <div class="iAb_txt_right">
+                        <div class="iAb_txt_right" data-aos="fade-left" data-aos-duration="3000">
                             <p>라운드어라운드는 기분 좋은 휴식을 선물하는</p>
                             <p>NO.1 라이프 코스메틱 브랜드입니다.</p>
                         </div>
@@ -394,7 +276,7 @@
 
                 <div class="sA_bottom">
                     <div class="sAb_left t_center">
-                        <div class="sAbl_top"><a href="#"><img src="images/sun_lotion.png" alt="sunlotion image"></a></div>
+                        <div class="sAbl_top"><a href="#"><img src="images/sun_lotion2.png" alt="sunlotion image"></a></div>
                         <div class="sAbl_bottom">
                             <h3>그린티 시카 선로션</h3>
                             <ul>
@@ -507,7 +389,7 @@
                 
                 <div class="fra_wrap">
                     <div class="fraA_left">
-                        <img src="images/bloom_edition.png" alt="bloom edition image">
+                        <img src="images/bloom_edition2.png" alt="bloom edition image">
                     </div>
     
                     <div class="fraA_right">
