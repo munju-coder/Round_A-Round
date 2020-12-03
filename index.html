@@ -24,7 +24,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <style>
-    .nav_fix { position: fixed; /* background-color: #edecf0; */ width: 1600px; top: 0; z-index: 30; padding-top: 20px; padding-bottom: 10px;  }
+    
+    .smallBanner { width: 100% !important; max-width: 100px; }
         
 </style>
 <script>
@@ -39,6 +40,14 @@
                 el: '.swiper-pagination',
                 clickable: true,
             },
+            autoplay: {
+                delay: 5000,
+            }
+        });
+
+        new Swiper('.smallBanner',{
+            slidesPerView: 1,
+            clickable: true,
             autoplay: {
                 delay: 5000,
             }
@@ -70,7 +79,7 @@
             }
         });
 
-        $("#search_btn").click(function () {
+        $("#search_btn,aside").click(function () {
             $('html').animate({
                 scrollTop: 0
             }, 500);
@@ -103,8 +112,20 @@
 </script>
 <body>
     <script>
+
+        //AOS js init
         AOS.init();
     </script>
+
+    <style>
+        header .header_wrap ul .m_icon { display: none; }
+
+        @media(max-width:1800px){
+            .mainBanner .swiper-slide img { width: 100%; }
+        }
+
+        
+    </style>
 
     <div class="wrap">
         <div class="mouseCur"><span class="wheel"><img src="images/RoundA.png" alt=""></span></div>
@@ -112,6 +133,10 @@
         <header class="dw_1600px">
             <div class="header_wrap">
                 <ul class="menu_left">
+                    <li class="m_icon">
+                        <a href="#"><img src="images/menu_icon.png" alt="menu icon"></a>
+                    </li>
+
                     <li class="ml40px">
                         <a href="#">PRODUCT</a>
                         <ol>
@@ -156,15 +181,22 @@
                 </ul>
             </div>
 
-            <nav class="nav t_center">
+            <nav class="header_nav t_center">
                 <div class="search_box">
                     <form action="" class="search_form">
                         <div class="close_box t_right">
-                            close<i class="fas fa-times"></i>
+                            <i class="fas fa-times"></i>
                         </div>
-                        <!-- <a href="#"><img src="images/diffuser6.png" alt="product diffuser"></a> -->
+
+                        <div class="swiper-container smallBanner">
+                            <div class="swiper-wrapper">
+                                <img class="swiper-slide" src="images/pr3.png" alt="product diffuser"> 
+                                <img class="swiper-slide" src="images/diffuser6.png" alt="product diffuser">
+                            </div>
+                        </div>
+
                         <div class="input_box">
-                            <input type="text">
+                            <input type="text" placeholder="라운드어라운드와 크리스마스 선물을 준비해보세요">
                             <button type="submit" value="검색">s e a r c h</button>
                         </div>
                     </form>
@@ -172,6 +204,10 @@
             </nav>
         </header>
         <!--// header-->
+
+        <aside>
+            <img class="cursor_pointer" src="images/btn_top.png" alt="top button">
+        </aside>
 
         <!--contetns-->
         <div class="contents">
@@ -230,16 +266,16 @@
                 </ul>
 
                 <ul class="iA_bottom">
-                    <li class="iAb_left">
+                    <li class="iAb_left" data-aos="fade-right" data-aos-duration="3000">
                         <img src="images/intro_img3.png" alt="intro image">
 
-                        <div class="iAb_txt_left" data-aos="fade-up" data-aos-duration="3000">
+                        <div class="iAb_txt_left" data-aos="fade-right" data-aos-duration="3000">
                             <p>기분 좋은 아침을 시작으로</p>
                             <p>편안하게 잠들 때까지,</p>
                         </div>
                     </li>
 
-                    <li class="iAb_right t_right">
+                    <li class="iAb_right t_right" data-aos="fade-left" data-aos-duration="3000">
                         <img src="images/intro_img4.png" alt="intro image">
 
                         <div class="iAb_txt_right" data-aos="fade-left" data-aos-duration="3000">
@@ -250,8 +286,12 @@
                 </ul>
 
                 <div class="more_box t_right">
-                    <div class="line_arrow"></div>
-                    <span>BRAND STORY</span>
+                    <a href="#">
+                        <span class="arrow"></span>
+                        <span class="arrow"></span>
+                        <span class="arrow"></span>
+                        <p class="brand_story">BRAND STORY</p>
+                    </a>
                 </div>
             </section>
             <!--// introArea-->
@@ -262,7 +302,7 @@
                 <div class="sA_top">
                     <img class="w100 sAt_left" src="images/skin_care1.png" alt="Greentea foam">
                     <div class="sAt_right t_center">
-                        <div class="sAtr_top"><a href="#"><img src="images/cleansing_foam.png" alt="cleansing foam image"></a></div>
+                        <div class="sAtr_top"><a href="#"><img data-aos="fade-left" data-aos-duration="3000" src="images/cleansing_foam.png" alt="cleansing foam image"></a></div>
                         <div class="sAtr_bottom">
                             <h3>그린티 약산성 클렌징 폼</h3>
                             <ul>
@@ -276,7 +316,7 @@
 
                 <div class="sA_bottom">
                     <div class="sAb_left t_center">
-                        <div class="sAbl_top"><a href="#"><img src="images/sun_lotion2.png" alt="sunlotion image"></a></div>
+                        <div class="sAbl_top"><a href="#"><img data-aos="fade-right" data-aos-duration="3000" src="images/sun_lotion2.png" alt="sunlotion image"></a></div>
                         <div class="sAbl_bottom">
                             <h3>그린티 시카 선로션</h3>
                             <ul>
@@ -344,9 +384,9 @@
                     </div>
                 </div>
 
-                <div class="more_box t_right">
+                <!-- <div class="more_box t_right">
                     <span>more</span>
-                </div>
+                </div> -->
             </section>
             <!--// productArea-->
 
